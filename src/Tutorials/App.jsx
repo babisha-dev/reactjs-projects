@@ -16,7 +16,7 @@ function MyButton(){
 export default function MyApp(){
   return(
     <div>
-    <h1 className="head">My first tutorial </h1>
+    <h1 className="head">My first tutorial {1*2}</h1>
     <MyButton/>
        </div>
   );
