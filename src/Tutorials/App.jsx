@@ -13,10 +13,13 @@ function MyButton(){
     </div>
 );
 }
+function sum(k){
+  return 2*k;
+}
 export default function MyApp(){
   return(
     <div>
-    <h1 className="head">My first tutorial {1*2}</h1>
+    <h1 className="head">My first tutorial {1*2} and {sum(2)}</h1>
     <MyButton/>
        </div>
   );
