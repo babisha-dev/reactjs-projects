@@ -16,6 +16,20 @@ function MyButton(){
 function sum(k){
   return 2*k;
 }
+function Car() {
+  const myobj = {
+    name: "Fiat",
+    model: "500",
+    color: "white"
+  };
+  return (
+    <>
+      <h1>My car is a {myobj.color} {myobj.name} {myobj.model}</h1>
+    </>
+  );
+}
+
+
 export default function MyApp(){
   return(
     <div>
