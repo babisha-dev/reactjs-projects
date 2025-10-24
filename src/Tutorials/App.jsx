@@ -22,6 +22,17 @@ function Car() {
     model: "500",
     color: "white"
   };
+  function Fruit() {
+  const x = 5;
+  let y = "Apple";
+  if (x < 10) {
+    y = "Banana";
+  }
+
+  return (
+    <h1>{y}</h1>
+  );
+}
   return (
     <>
       <h1>My car is a {myobj.color} {myobj.name} {myobj.model}</h1>
