@@ -7,6 +7,7 @@ import AppS from './Tutorials/App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppS />
+    <car/>
   </StrictMode>,
   
 )
