@@ -1,3 +1,6 @@
+import { createRoot } from 'react-dom/client'
+
+
 //  Expressions inside curly braces
 const Element=<h1>hello {5+5}</h1>;
 
@@ -17,6 +20,7 @@ const Top= (
     <p>first para</p>
     <p> Second para</p>
   </div>
+  
 );
 
 
@@ -29,4 +33,18 @@ const Elem=<h1 className="myclass">hello</h1>
 //comments is {/*like this */} in jsx
 
 const Myelem=<h1> Hello {/*comment*/} </h1>
-  
+
+// REact components are like javasript fuctions and  return HTML
+export default 
+function Car(){
+   return (
+    <>
+    <h2> my car</h2>
+    <p> my car name is Volkswagen black color</p>
+    </>
+   );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car />
+);
