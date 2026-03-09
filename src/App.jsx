@@ -15,6 +15,12 @@ function Section({title, color, children}){
         </div>
     )
 }
+function Badge({label, color="#6366f1"}){
+    return (
+        <span style={{ background: color +"20", color, border: `1px solid ${color}`,
+    borderRadius:6, padding: "2px 10px", fontSize: 13, fontWeight: 600, marginRight:6  }}> {label}</span>
+    )
+}
 
 export default function App(){
     return <div style={{backgroundColor: "blue"}}>
