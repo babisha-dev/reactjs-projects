@@ -1,3 +1,4 @@
+import { useState } from "react";
 import EventCard from "./components/EventCard";
 
 
@@ -21,7 +22,25 @@ function Badge({label, color="#6366f1"}){
     borderRadius:6, padding: "2px 10px", fontSize: 13, fontWeight: 600, marginRight:6  }}> {label}</span>
     )
 }
+function Btn({onClick, children, color="#6366f1"}){
+    return (
+        <button onClick={onClick} style={{background:color, color:"white", borderRadius:8, padding:"7px 16px", cursor:"pointer",border:"none", fontWeight:600, fontSize:13, marginRight:6,marginTop:4 }}> {children}</button>
+    )
+}
 
+function NumberState(){
+    const [count,setCount]=useState(0);
+    return (
+        
+        <div>
+        <p style={{margin:"0 0 0px", fontSize:13, color: "#64748b" }}><code style={{background: "#f1f5f9", padding: "2px 6px", borderRadius: 4}}>const [count, setCount] = useState(0)</code></p>
+        <div>{count} </div>
+        <Btn onClick={()=> setCount(c=> c+1) } color="#ef4444">Increment</Btn>
+        <Btn onClick={()=>setCount(0)} color="#94a3b8"> Reset</Btn>
+        <Btn onClick={()=> setCount(c=>c-1)}  color="green">Decrement</Btn>
+        </div>
+    )
+}
 export default function App(){
     return <div style={{backgroundColor: "blue"}}>
         <h1> State Deep Dive Playground</h1>
