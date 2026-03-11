@@ -67,6 +67,35 @@ function BooleanState(){
         </div>
     )
 }
+
+function StringState(){
+    const [name,setName] =useState("");
+    const [color,setColor] =useState("green");
+    return(
+        <div>
+        
+            <input style={{width:500,padding:5,height:30, borderRadius:10,border:"2px solid ", borderColor:" #dfd9d9", color:"#9d9999"}} placeholder={"Type your name..."} value={name} onChange={e => setName(e.target.value)}/ >
+        
+        <div style={{display:"flex",marginTop:10, gap:8}}> 
+            {["green", "yellow","orange", "blue" , "red"].map(c=>
+                (
+                    <div key={c} onClick={()=>setColor(c)} style={{width:24,height:24, borderRadius:50,backgroundColor:c,cursor:"pointer",border:color  ===c ? "2px solid black" : "2px solid transparent",
+                    }} /> 
+                   )  )}
+                    </div>
+                    {name && (<p style={{
+          marginTop: 12, fontSize: 22, fontWeight: 700, color,
+          transition: "color 0.2s",
+        }}>
+          Hello, {name}! 👋
+        </p>)} 
+                
+           
+       
+        </div>
+            )
+
+}
 export default function App(){
     return <div style={{minHeight:"100vh", paddingRight:20,paddingLeft:20, margin:0}}>
     <div style={{backgroundColor: "#e5edf6c7",  minHeight:"100vh"}}>
@@ -78,6 +107,9 @@ export default function App(){
             </Section>
             <Section title="2.  Boolean State" color="#22c55e">
           <BooleanState />
+        </Section>
+        <Section title="3. String State" color="#f0aa28">
+            <StringState />
         </Section>
 
      
