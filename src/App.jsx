@@ -6,11 +6,11 @@ function Section({title, color, children}){
     return (
         <div style={{
             background:"white", borderRadius:12, padding:20,
-            borderLeft: `4px solid ${color}`,marginBottom:16,
+            borderLeft: `4px solid ${color}`,marginBottom:16,marginLeft:20,marginRight:20,
              boxShadow: "0  2px 8px rgba(0,0,0,0.06)"
         }}>
             <h3 style={{
-                margin :"0 0 14px", color: "#1e293b", fontSize: 15
+                margin :"10px 10px 14px 10px", color: "#1e293b", fontSize: 15
             }}>{title}</h3>
             {children}
         </div>
@@ -41,10 +41,37 @@ function NumberState(){
         </div>
     )
 }
+function BooleanState(){
+   const[isOn,setIsOn] = useState(false);
+   const[isShowSecret, setShowSecret]=useState(false);
+    return (
+        <div>
+      <div>
+     <p style={{margin:"0 0 0px", fontSize:13, color: "#64748b" }}><code style={{background: "#f1f5f9", padding: "2px 6px", borderRadius: 4}}>const [isOn, setIsOn] = useState(false)</code></p>
+   <div style={{ display: "flex", gap:16, alignItems:"center"}}>
+
+    <div style={{borderRadius:25, backgroundColor:isOn?"#dbe95d":" #d2cdcd", width:50,height:30, marginTop:15, position:"relative"}}>
+        <div onClick={() =>  setIsOn(v => !v)} style={{width:25, height:25,borderRadius:50,backgroundColor:isOn?"yellow":"white",alignItems:"center", position:"absolute",top:2, left:isOn ?24:2,cursor:"pointer", transition:"left 0.2s"}}/>
+
+        </div>
+    
+    <span style={{marginTop:10}}>Light Is<Badge label={isOn? "ON" :"OFF"} color={isOn ? "#22c55e" : "#94a3b8"}></Badge></span>
+   
+   </div>
+
+   <div>
+    <Btn  style={{}} onClick={()=>setShowSecret(v=>!v)}>{isShowSecret? "Hide":"Reveal"}</Btn>
+    {isShowSecret && <p style={{backgroundColor:"#dccb89", fontWeight:300,  borderRadius:15,width:500, padding:15 }}> This is the Secret</p>}
+   </div>
+      </div>
+        </div>
+    )
+}
 export default function App(){
-    return <div style={{backgroundColor: "blue"}}>
-        <h1> State Deep Dive Playground</h1>
-        <p> Interact with every type of state</p>
+    return <div style={{minHeight:"100vh", paddingRight:20,paddingLeft:20, margin:0}}>
+    <div style={{backgroundColor: "#e5edf6c7",  minHeight:"100vh"}}>
+        <h1 style={{textAlign: "center", marginTop:0, paddingTop:20}}> State Deep Dive Playground</h1>
+        <p style={{textAlign:"center"}}> Interact with every type of state</p>
         <div style={ {margin:"4px" }}>
             <Section title="1.  Number State" color="#6366f1"> 
              <NumberState />
@@ -53,18 +80,9 @@ export default function App(){
           <BooleanState />
         </Section>
 
-        <Section title="3.  String State" color="#f59e0b">
-          <StringState />
-        </Section>
-
-        <Section title="4.  Array State" color="#ef4444">
-          <ArrayState />
-        </Section>
-
-        <Section title="5.  Object State" color="#8b5cf6">
-          <ObjectState />
-        </Section>
+     
 
         </div>
+    </div>
     </div>
 }
