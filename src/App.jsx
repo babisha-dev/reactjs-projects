@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EventCard from "./components/EventCard";
+
 
 
 function Section({title, color, children}){
@@ -73,8 +73,7 @@ function StringState(){
     const [color,setColor] =useState("green");
     return(
         <div>
-        
-            <input style={{width:500,padding:5,height:30, borderRadius:10,border:"2px solid ", borderColor:" #dfd9d9", color:"#9d9999"}} placeholder={"Type your name..."} value={name} onChange={e => setName(e.target.value)}/ >
+            <input style={{width:500,padding:5,height:30, borderRadius:10,border:"2px solid ", borderColor:" #dfd9d9", color:"#9d9999"}} placeholder={"Type your name..."} value={name} onChange={e => setName(e.target.value)}/>
         
         <div style={{display:"flex",marginTop:10, gap:8}}> 
             {["green", "yellow","orange", "blue" , "red"].map(c=>
@@ -89,13 +88,42 @@ function StringState(){
         }}>
           Hello, {name}! 👋
         </p>)} 
-                
-           
-       
         </div>
-            )
+        )    
+            }
 
-}
+function ArrayState(){
+    console.log("ArrayState rendered");
+    const [input,setInput] =useState("");
+    const [todos,settodos] =useState(["write journal", "study dbms"]);
+
+    function todo(){
+        if(!input.trim())  return;
+        settodos(prev=> [...prev,input.trim()]);
+        setInput("");
+    }
+    function removetodo(index){
+    settodos(prev=> prev.filter((_,i)=> i!==index));
+    }
+    console.log(todos);
+    return(
+        <div>
+            <div style={{display: "flex"}}>
+            <input placeholder="Add a todo" onChange={e=> setInput(e.target.value)} onKeyDown={e=> e.key ==="Enter" && todo()} value={input} style={{border: "2px solid #9b9da0", borderRadius:5, padding:10, width:500, marginRight:5,marginBottom:10}} />
+            <Btn onClick={todo}>{"Add"}</Btn>
+        </div>
+        {todos.map((task,i)=>(
+            <div key={i} style={{display:"flex", width:500, border:"2px solid ", padding:10, marginBottom:6, justifyContent:"space-between"}}> 
+            <span>{task}</span>
+            <Btn onClick={()=>removetodo(i)}  color={ "#ef4444"}>x</Btn>
+            </div>
+        )
+
+        )}
+</div>
+    )
+
+    }
 export default function App(){
     return <div style={{minHeight:"100vh", paddingRight:20,paddingLeft:20, margin:0}}>
     <div style={{backgroundColor: "#e5edf6c7",  minHeight:"100vh"}}>
@@ -110,6 +138,9 @@ export default function App(){
         </Section>
         <Section title="3. String State" color="#f0aa28">
             <StringState />
+        </Section>
+        <Section title="4. Array State" color="#f01b1b">
+          <ArrayState />
         </Section>
 
      
