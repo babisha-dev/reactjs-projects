@@ -124,6 +124,31 @@ function ArrayState(){
     )
 
     }
+
+    function  ObjectState(){
+           const [user, setuser] =useState({name:"Alice", age: 25, city:"Paris"});
+           function updatefield(field,val){
+            setuser(prev=> ({...prev,[field]:val}));
+           }
+           return (
+            <div>
+            <div style={{display:"flex"}}>
+                {Object.entries(user).map(([key,val])=>(
+                    <div key={key} style={{border:"1px solid #6d6a6a",borderRadius:10, backgroundColor:"#aeabab", padding:6, margin:10}}>
+                        <span style={{padding:10,margin:10}}>{key}</span>
+                        <strong>{val}</strong>
+                    </div>
+                )
+                )}
+            </div>
+            <div>
+<Btn onClick={()=>updatefield("age", user.age+1)} >Birthday +1</Btn>
+<Btn onClick={()=>updatefield("city", user.city=="paris" ? "Tokyo" :"paris")} >City</Btn>
+<Btn onClick={()=>updatefield("name", user.name =="Alice" ? "Bob" :"Alice")} >{"Name"}</Btn>
+            </div>
+            </div>
+           )
+    }
 export default function App(){
     return <div style={{minHeight:"100vh", paddingRight:20,paddingLeft:20, margin:0}}>
     <div style={{backgroundColor: "#e5edf6c7",  minHeight:"100vh"}}>
@@ -142,6 +167,11 @@ export default function App(){
         <Section title="4. Array State" color="#f01b1b">
           <ArrayState />
         </Section>
+        
+        <Section title="5. Object State" color="pink">
+            <ObjectState />
+            </Section>
+
 
      
 
